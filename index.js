@@ -37,33 +37,10 @@ var bandNames = {
     }
 };
 
-var bandMembers = {
-    country: {
-        prefixes: ['Drinkin\' Willie', 'Bobby Shane', 'Leanne'],
-        suffixes: ['McGraw III', 'Musgraves', 'Jackson Jr.'],
-    },
-    metal: {
-        prefixes: ['Gorgoth', 'Gorehl', 'Burahl'],
-        suffixes: ['The Destroyer', 'Bloodlust', 'Eluvith']
-    },
-    jazz: {
-        prefixes: ['Duke Earl', 'Jellyroll', 'Cannonball'],
-        suffixes: ['Jones', 'Ellington', 'Monk']
-    }
-};
-
 var generateBandName = function(genre) {
     return choose(bandNames[genre].prefixes) + ' ' +
            choose(bandNames[genre].suffixes);
 };
-
-var generateBandMember = function(genre) {
-    return {
-        name: choose(bandMembers[genre].prefixes) + ' ' +
-              choose(bandMembers[genre].suffixes)
-    };
-};
-
 
 app.get('/', function(req, res) {
     res.render('form');
@@ -73,14 +50,7 @@ app.post('/', function(req, res) {
     var genre = req.body.genre;
     var bandName = generateBandName(genre);
 
-    var members = [];
-
-    for (var i=0; i<3; i++) {
-        var member = generateBandMember(genre);
-        members.push(member);
-    }
-
-    res.render('output', {name: bandName, members: members});
+    res.render('output', {name: bandName});
 });
 
 app.listen(8080);
