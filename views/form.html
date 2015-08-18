@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="/" method="post" class="pure-form pure-form-stacked">
+    <fieldset>
+        <legend>Band Members</legend>
+        {% for i in Array(5) %}
+        <select name="instrument{{loop.index0}}">
+            <option value="none">No member #{{loop.index}}</option>
+            <option value="guitar">Guitar</option>
+            <option value="bass">Bass</option>
+            <option value="drums">Drums</option>
+            <option value="keys">Keys</option>
+        </select>
+        {% endfor %}
+    </fieldset>
+    <fieldset>
+        <legend>Genre</legend>
+
+        <button name="genre" value="country" class="pure-button">Country</button>
+        <button name="genre" value="metal" class="pure-button">Heavy Metal</button>
+        <button name="genre" value="jazz" class="pure-button">Jazz</button>
+    </fieldset>
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Introducing...</h2>
+<h1>{{ name }}</h1>
+<h2>Featuring...</h2>
+<ul>
+    {% for member in members %}
+    <li>
+        <h4>On {{ member.instrument }}...</h4>
+        <h3>{{ member.name }}</h3>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
