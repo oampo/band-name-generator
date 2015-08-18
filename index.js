@@ -57,11 +57,10 @@ var generateBandName = function(genre) {
            choose(bandNames[genre].suffixes);
 };
 
-var generateBandMember = function(genre, instrument) {
+var generateBandMember = function(genre) {
     return {
         name: choose(bandMembers[genre].prefixes) + ' ' +
-              choose(bandMembers[genre].suffixes),
-        instrument: instrument
+              choose(bandMembers[genre].suffixes)
     };
 };
 
@@ -76,13 +75,8 @@ app.post('/', function(req, res) {
 
     var members = [];
 
-    for (var i=0; i<5; i++) {
-        var instrument = req.body['instrument' + i];
-        if (instrument == 'none') {
-            continue;
-        }
-
-        var member = generateBandMember(genre, instrument);
+    for (var i=0; i<3; i++) {
+        var member = generateBandMember(genre);
         members.push(member);
     }
 
